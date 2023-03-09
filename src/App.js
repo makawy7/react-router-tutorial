@@ -8,6 +8,8 @@ import NotFound from "./pages/NotFound";
 import SingleProduct from "./pages/SingleProduct";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Auth from "./pages/Auth";
+import Guest from "./pages/Guest";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,8 +21,22 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="products" element={<Products />} />
           <Route path="products/:productId" element={<SingleProduct />} />
-          <Route path="login" element={<Login setUser={setUser} />} />
-          <Route path="dashboard" element={<Dashboard user={user} />} />
+          <Route
+            path="login"
+            element={
+              <Guest user={user}>
+                <Login setUser={setUser} />
+              </Guest>
+            }
+          />
+          <Route
+            path="dashboard"
+            element={
+              <Auth user={user}>
+                <Dashboard user={user} />
+              </Auth>
+            }
+          ></Route>
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
