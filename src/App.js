@@ -3,6 +3,7 @@ import { useState } from "react";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import ProductLayout from "./pages/ProductLayout";
 import Products from "./pages/Products";
 import NotFound from "./pages/NotFound";
 import SingleProduct from "./pages/SingleProduct";
@@ -19,8 +20,10 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="products" element={<Products />} />
-          <Route path="products/:productId" element={<SingleProduct />} />
+          <Route path="products" element={<ProductLayout />}>
+            <Route index element={<Products />} />
+            <Route path=":productId" element={<SingleProduct />} />
+          </Route>
           <Route
             path="login"
             element={
