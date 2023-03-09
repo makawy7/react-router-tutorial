@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
 import NotFound from "./pages/NotFound";
+import SingleProduct from "./pages/SingleProduct";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="products" element={<Products />} />
+          <Route path="products/:productId" element={<SingleProduct />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
